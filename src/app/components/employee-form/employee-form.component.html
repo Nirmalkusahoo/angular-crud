@@ -1,0 +1,70 @@
+<!-- Employee form -->
+
+<div class="container">
+ <form #empForm="ngForm" class="form-inline" ngNativeValidate >
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="firstName">First Name:</label>
+        <input type="text" class="form-control" [(ngModel)]="empObj.firstName" #firstName="ngModel" placeholder="Enter First Name" [ngModelOptions]="{standalone: true}" name="firstName">
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="lastName">Last Name:</label>
+        <input type="text" class="form-control" [(ngModel)]="empObj.lastName" id="lastName" placeholder="Enter Last Name" name="lastName">
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" [(ngModel)]="empObj.email" #email="ngModel" id="email" placeholder="Enter Email" name="email">
+      </div>
+    </div>
+  </div><br>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="age">Age:</label>
+        <input type="number" min="0" class="form-control" maxlength="2" #age="ngModel" [(ngModel)]="empObj.age" id="age" [ngModelOptions]="{standalone: true}" placeholder="Enter age" name="age">
+      </div>
+    </div>
+    <div class="col-sm-4">
+          <label for="gender">Gender:</label>
+          <select class="form-control" placeholder="Please select" [(ngModel)]="empObj.gender" id="gender" [ngModelOptions]="{standalone: true}">
+            <option value='Male'>Male</option>
+            <option value='Female'>Female</option>
+          </select>      
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="dob">Date of Birth:</label>
+        <input type="date" class="form-control" [(ngModel)]="empObj.dob" id="dob" placeholder="Enter date of birth" name="dob" required>
+      </div>
+    </div>
+  </div><br>
+  
+  <div *ngIf="employeeService.showAlertMessage" class="alert alert-success alert-dismissable">
+      <a href="#" class="close"  data-dismiss="alert" aria-label="close">×</a>
+      <strong>{{employeeService.alertMessage}}</strong>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12 pull-right" >
+      <button type="submit" class="btn btn-primary" [disabled]="!empForm.form.valid" *ngIf="!employeeService.enableButton" (click)="submit()">Submit</button>
+      <button type="submit" class="btn btn-primary" *ngIf="employeeService.enableButton" (click)="save(empObj)">Save</button>
+    </div>
+  </div>
+
+  
+
+  </form>
+    
+<h2> List of Employess </h2>
+ 
+        <button type="submit" class="btn btn-primary" routerLink="list"   >Show List</button>
+  <router-outlet></router-outlet>
+</div>
+
+
+

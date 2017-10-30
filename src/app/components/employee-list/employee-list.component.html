@@ -1,0 +1,30 @@
+<div class="table-responsive">          
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+        <th>Age</th>
+        <th>Gender</th>
+        <th>Date of Birth</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let eachEmployee of myEmployees;let i=index">
+        <td>{{eachEmployee.firstName}}</td>
+        <td>{{eachEmployee.lastName}}</td>
+        <td>{{eachEmployee.email}}</td>
+        <td>{{eachEmployee.age}}</td>
+        <td>{{eachEmployee.gender}}</td>
+        <td>{{eachEmployee.dob}}</td>
+        <td>
+          <button type="submit" class="btn btn-primary" (click)="update(eachEmployee,i)">Update</button> |
+          <button type="submit" class="btn btn-primary" (click)="delete(i)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  </div>
